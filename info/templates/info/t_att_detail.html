@@ -4,7 +4,7 @@
     {% extends 'info/base.html' %}
     {% load static %}
     <meta charset="UTF-8">
-    <title>Attendance</title>
+    <title>Посещаемость</title>
 </head>
 <body>
     {% block content %}
@@ -18,9 +18,9 @@
                   <thead>
                     <tr>
                         <th>#</th>
-                        <th>Date</th>
-                        <th>Day</th>
-                        <th>Status</th>
+                        <th>Дата</th>
+                        <th>День</th>
+                        <th>Посещение</th>
                         <th></th>
                     </tr>
                   </thead>
@@ -31,14 +31,14 @@
                             <td>{{ a.date }}</td>
                             <td>{{ a.date|date:"l" }}</td>
                             {% if a.status %}
-                            <td class="p-3 mb-2 bg-success text-white">Present <span class="glyphicon glyphicon-thumbs-up"></span></td>
+                            <td class="p-3 mb-2 bg-success text-white">Присутствовал <span class="glyphicon glyphicon-thumbs-up"></span></td>
                             {% else %}
-                            <td class="p-3 mb-2 bg-danger text-white">Absent <span class="glyphicon glyphicon-thumbs-down"></span</td>
+                            <td class="p-3 mb-2 bg-danger text-white">Отсутствовал <span class="glyphicon glyphicon-thumbs-down"></span</td>
                             {% endif %}
-                            <td><a class="btn btn-warning" href="{% url 'change_att' a.id %}">Change</a> </td>
+                            <td><a class="btn btn-warning" href="{% url 'change_att' a.id %}">Изменить</a> </td>
                         </tr>
                     {% empty %}
-                            <p>student has no attendance</p>
+                            <p>студент не посещает</p>
                     {% endfor %}
 
                   </tbody>

@@ -1,14 +1,14 @@
 {% extends 'info/base.html' %}
 {% block content %}
-    <h1>List of Classes</h1>
+    <h1>Список занятий</h1>
     <div class="card mb-3">
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                        <th>Class</th>
-                        <th>Course</th>
+                        <th>Занятие</th>
+                        <th>Курс</th>
                         <th></th>
                     </tr>
                   </thead>
@@ -19,21 +19,20 @@
                         <td>{{ ass.course }}</td>
                         <td>
                             {% if choice == 1 %}
-                                <a class="btn btn-primary" href="{% url 't_class_date' ass.id %}" role="button">Enter Attendance</a>
-                                <a class="btn btn-warning" href="{% url 't_extra_class' ass.id %}">Extra Class</a>
-                                <a class="btn btn-danger" href="{% url 't_student' ass.id %}">View Students</a>
+                                <a class="btn btn-warning" href="{% url 't_extra_class' ass.id %}">Указать отсутствие</a>
+                                <a class="btn btn-danger" href="{% url 't_student' ass.id %}">Просмотр студентов</a>
 
                             {% elif choice == 2 %}
-                                <a class="btn btn-primary" href="{% url 't_marks_list' ass.id %}" role="button">Enter Marks</a>
-                                <a class="btn btn-danger" href="{% url 't_student_marks' ass.id %}">View Students</a>
+                                <a class="btn btn-primary" href="{% url 't_marks_list' ass.id %}" role="button">Ввести оценку</a>
+                                <a class="btn btn-danger" href="{% url 't_student_marks' ass.id %}">Просмотр студентов</a>
                             {% elif choice == 3 %}
-                                <a class="btn btn-danger" href="{% url 't_report' ass.id %}">Generate reports</a>
+                                <a class="btn btn-danger" href="{% url 't_report' ass.id %}">Получить отчет</a>
                             {% endif %}
 
                         </td>
                     </tr>
                     {% empty %}
-                            <p>teacher has no courses</p>
+                            <p>у преподавателя нет занятий</p>
                     {% endfor %}
 
                   </tbody>

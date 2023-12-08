@@ -55,7 +55,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('period', models.CharField(choices=[('7:30 - 8:30', '7:30 - 8:30'), ('8:30 - 9:30', '8:30 - 9:30'), ('9:30 - 10:30', '9:30 - 10:30'), ('11:00 - 11:50', '11:00 - 11:50'), ('11:50 - 12:40', '11:50 - 12:40'), ('12:40 - 1:30', '12:40 - 1:30'), ('2:30 - 3:30', '2:30 - 3:30'), ('3:30 - 4:30', '3:30 - 4:30'), ('4:30 - 5:30', '4:30 - 5:30')], default='8:30 - 9:30', max_length=50)),
-                ('day', models.CharField(choices=[('Monday', 'Monday'), ('Tuesday', 'Tuesday'), ('Wednesday', 'Wednesday'), ('Thursday', 'Thursday'), ('Friday', 'Friday'), ('Saturday', 'Saturday')], default='Monday', max_length=15)),
+                ('day', models.CharField(choices=[('Понедельник', 'Понедельник'), ('Вторник', 'Вторник'), ('Среда', 'Среда'), ('Четверг', 'Четверг'), ('Пятница', 'Пятница'), ('Суббота', 'Суббота')], default='Понедельник', max_length=15)),
                 ('assign', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='info.Assign')),
             ],
         ),
@@ -112,7 +112,7 @@ class Migration(migrations.Migration):
             name='Marks',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(choices=[('Internal test 1', 'Internal test 1'), ('Internal test 2', 'Internal test 2'), ('Internal test 3', 'Internal test 3'), ('Event 1', 'Event 1'), ('Event 2', 'Event 2'), ('Semester End Exam', 'Semester End Exam')], default='Internal test 1', max_length=50)),
+                ('name', models.CharField(choices=[('Midterm 1', 'Midterm 1'), ('РК 1', 'РК 1'), ('Midterm 2', 'Midterm 2'), ('РК 2', 'РК 2'), ('Экзамен', 'Экзамен')], default=[('Midterm 1', 'Midterm 1'), ('РК 1', 'РК 1'), ('Midterm 2', 'Midterm 2'), ('РК 2', 'РК 2'), ('Экзамен', 'Экзамен')], max_length=50)),
                 ('marks1', models.IntegerField(default=0, validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(100)])),
             ],
         ),
@@ -120,7 +120,7 @@ class Migration(migrations.Migration):
             name='MarksClass',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(choices=[('Internal test 1', 'Internal test 1'), ('Internal test 2', 'Internal test 2'), ('Internal test 3', 'Internal test 3'), ('Event 1', 'Event 1'), ('Event 2', 'Event 2'), ('Semester End Exam', 'Semester End Exam')], default='Internal test 1', max_length=50)),
+                ('name', models.CharField(choices=[('Midterm 1', 'Midterm 1'), ('РК 1', 'РК 1'), ('Midterm 2', 'Midterm 2'), ('РК 2', 'РК 2'), ('Экзамен', 'Экзамен')], default=[('Midterm 1', 'Midterm 1'), ('РК 1', 'РК 1'), ('Midterm 2', 'Midterm 2'), ('РК 2', 'РК 2'), ('Экзамен', 'Экзамен')], max_length=50)),
                 ('status', models.BooleanField(default='False')),
                 ('assign', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='info.Assign')),
             ],

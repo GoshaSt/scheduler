@@ -5,18 +5,18 @@
                   <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-table"></i>
-            <b>Attendance</b></div>
+            <b>Посещаемость</b></div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                   <thead class="thead-light ">
                     <tr>
-                        <th>Course ID</th>
-                        <th>Course name</th>
-                        <th>Attended classes</th>
-                        <th>Total classes</th>
-                        <th>Attendance %</th>
-                        <th>Classes to attend</th>
+                        <th>Код занятия</th>
+                        <th>Название</th>
+                        <th>Посещаемые занятия</th>
+                        <th>Всего занятий</th>
+                        <th>Посещаемость %</th>
+                        <th>Занятий посещено</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -34,7 +34,7 @@
                         <td>{{ a.classes_to_attend }}</td>
                     </tr>
                     {% empty %}
-                            <p>student has no courses</p>
+                            <p>у студента нет занятий</p>
                     {% endfor %}
 
                   </tbody>

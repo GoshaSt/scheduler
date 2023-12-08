@@ -5,16 +5,16 @@
                   <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-table"></i>
-            <b>Marks</b></div>
+            <b>Оценки</b></div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                        <th style="width: 25%">Student USN</th>
-                        <th style="width: 25%">Student Name</th>
-                        <th style="width: 25%">Attendance</th>
-                        <th style="width: 25%">CIE</th>
+                        <th style="width: 25%">Уникальный идентификационный номер студента</th>
+                        <th style="width: 25%">Имя студента</th>
+                        <th style="width: 25%">Посещаемость</th>
+                        <th style="width: 25%">Экзамены</th>
                   </thead>
                   <tbody>
                     {% for sc in sc_list %}
@@ -33,7 +33,7 @@
                         {% endif %}
                     </tr>
                     {% empty %}
-                            <p>student has no courses</p>
+                            <p>Студента нет на занятиях</p>
                     {% endfor %}
 
                   </tbody>

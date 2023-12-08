@@ -11,9 +11,9 @@
                   <thead>
                     <tr>
                         <th>#</th>
-                        <th>Date</th>
-                        <th>Day</th>
-                        <th>Status</th>
+                        <th>Дата</th>
+                        <th>День</th>
+                        <th>Был?</th>
                         <th></th>
                     </tr>
                   </thead>
@@ -24,13 +24,13 @@
                             <td>{{ a.date }}</td>
                             <td>{{ a.date|date:"l" }}</td>
                             {% if a.status %}
-                            <td class="p-3 mb-2 bg-success text-white">Present <span class="glyphicon glyphicon-thumbs-up"></span></td>
+                            <td class="p-3 mb-2 bg-success text-white">Присутствовал <span class="glyphicon glyphicon-thumbs-up"></span></td>
                             {% else %}
-                            <td class="p-3 mb-2 bg-danger text-white">Absent <span class="glyphicon glyphicon-thumbs-down"></span</td>
+                            <td class="p-3 mb-2 bg-danger text-white">Отсутствовал <span class="glyphicon glyphicon-thumbs-down"></span</td>
                             {% endif %}
                         </tr>
                     {% empty %}
-                            <p>student has no attendance</p>
+                            <p>студент не посещает</p>
                     {% endfor %}
 
                   </tbody>

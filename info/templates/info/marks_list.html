@@ -11,14 +11,13 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                        <th>Course ID</th>
-                        <th>Course name</th>
-                        <th>Internals 1</th>
-                        <th>Internals 2</th>
-                        <th>Internals 3</th>
-                        <th>Event 1</th>
-                        <th>Event 2</th>
-                        <th>SEE</th>
+                        <th>Код занятия</th>
+                        <th>Название</th>
+                        <th>Midterm 1</th>
+                        <th>РК 1</th>
+                        <th>Midterm 2</th>
+                        <th>РК 2</th>
+                        <th>Экзамен</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -31,7 +30,7 @@
                         {% endfor %}
                     </tr>
                     {% empty %}
-                            <p>student has no courses</p>
+                            <p>у студента нет занятий</p>
                     {% endfor %}
 
                   </tbody>

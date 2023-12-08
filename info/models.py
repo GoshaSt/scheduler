@@ -7,8 +7,8 @@ from datetime import timedelta
 
 # Create your models here.
 sex_choice = (
-    ('Male', 'Male'),
-    ('Female', 'Female')
+    ('Мужчина', 'Мужчина'),
+    ('Девушка', 'Девушка')
 )
 
 time_slots = (
@@ -24,21 +24,20 @@ time_slots = (
 )
 
 DAYS_OF_WEEK = (
-    ('Monday', 'Monday'),
-    ('Tuesday', 'Tuesday'),
-    ('Wednesday', 'Wednesday'),
-    ('Thursday', 'Thursday'),
-    ('Friday', 'Friday'),
-    ('Saturday', 'Saturday'),
+    ('Понедельник', 'Понедельник'),
+    ('Вторник', 'Вторник'),
+    ('Среда', 'Среда'),
+    ('Четверг', 'Четверг'),
+    ('Пятница', 'Пятница'),
+    ('Суббота', 'Суббота'),
 )
 
 test_name = (
-    ('Internal test 1', 'Internal test 1'),
-    ('Internal test 2', 'Internal test 2'),
-    ('Internal test 3', 'Internal test 3'),
-    ('Event 1', 'Event 1'),
-    ('Event 2', 'Event 2'),
-    ('Semester End Exam', 'Semester End Exam'),
+    ('Midterm 1', 'Midterm 1'),
+    ('РК 1', 'РК 1'),
+    ('Midterm 2', 'Midterm 2'),
+    ('РК 2', 'РК 2'),
+    ('Экзамен', 'Экзамен'),
 )
 
 
@@ -283,8 +282,14 @@ days = {
 
 def create_attendance(sender, instance, **kwargs):
     if kwargs['created']:
-        start_date = AttendanceRange.objects.all()[:1].get().start_date
-        end_date = AttendanceRange.objects.all()[:1].get().end_date
+        try:
+            attendance_range = AttendanceRange.objects.all()[:1].get()
+        except AttendanceRange.DoesNotExist:
+            print("No AttendanceRange object found. Please create one.")
+            return
+
+        start_date = attendance_range.start_date
+        end_date = attendance_range.end_date
         for single_date in daterange(start_date, end_date):
             if single_date.isoweekday() == days[instance.day]:
                 try:
@@ -304,12 +309,11 @@ def create_marks(sender, instance, **kwargs):
                 except StudentCourse.DoesNotExist:
                     sc = StudentCourse(student=instance, course=ass.course)
                     sc.save()
-                    sc.marks_set.create(name='Internal test 1')
-                    sc.marks_set.create(name='Internal test 2')
-                    sc.marks_set.create(name='Internal test 3')
-                    sc.marks_set.create(name='Event 1')
-                    sc.marks_set.create(name='Event 2')
-                    sc.marks_set.create(name='Semester End Exam')
+                    sc.marks_set.create(name='Midterm 1')
+                    sc.marks_set.create(name='РК 1')
+                    sc.marks_set.create(name='Midterm 2')
+                    sc.marks_set.create(name='РК 2')
+                    sc.marks_set.create(name='Экзамен')
         elif hasattr(instance, 'course'):
             stud_list = instance.class_id.student_set.all()
             cr = instance.course
@@ -319,12 +323,11 @@ def create_marks(sender, instance, **kwargs):
                 except StudentCourse.DoesNotExist:
                     sc = StudentCourse(student=s, course=cr)
                     sc.save()
-                    sc.marks_set.create(name='Internal test 1')
-                    sc.marks_set.create(name='Internal test 2')
-                    sc.marks_set.create(name='Internal test 3')
-                    sc.marks_set.create(name='Event 1')
-                    sc.marks_set.create(name='Event 2')
-                    sc.marks_set.create(name='Semester End Exam')
+                    sc.marks_set.create(name='Midterm 1')
+                    sc.marks_set.create(name='РК 1')
+                    sc.marks_set.create(name='Midterm 2')
+                    sc.marks_set.create(name='РК 2')
+                    sc.marks_set.create(name='Экзамен')
 
 
 def create_marks_class(sender, instance, **kwargs):
